@@ -1,16 +1,14 @@
-http://localhost:8000/signup?name=mahmoud&pass=2020&tel=100
+https://chatnet-cxof.onrender.com/signup?name=mahmoud&pass=2020&tel=100  ->post
 
-http://localhost:8000/login?identify=mahmoud&psw=2020
+https://chatnet-cxof.onrender.com/login?identify=mahmoud&psw=2020 ->get
 
+https://chatnet-cxof.onrender.com/finduser?name=mahmoud   ->get
 
-http://localhost:8000/finduser?name=mahmoud
+https://chatnet-cxof.onrender.com/del/:id  ->delete
 
+https://chatnet-cxof.onrender.com/msgs?id=....   ->get
 
-http://localhost:8000/del/:id
+https://chatnet-cxof.onrender.com/priverchat?sid=....&rid=....     ->get
 
-http://localhost:8000/msgs?id=....
-
-http://localhost:8000/priverchat?sid=....&rid=....
-
-http://localhost:8000/sendmsg?sid=....&rid=...&msg=....
+https://chatnet-cxof.onrender.com/sendmsg?sid=....&rid=...&msg=....   ->post
 

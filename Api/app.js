@@ -17,4 +17,4 @@ server.use(sendmsgApi_1.sendmsgRouter);
 server.use(AllmychatApi_1.mymsgsRouter);
 server.use(signupApi_1.signupRoute);
 server.use(Finduser_1.FinduserRouter);
-server.listen(8000);
+server.listen(process.env.PORT || 8000);

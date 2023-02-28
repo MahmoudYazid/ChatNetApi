@@ -52,9 +52,7 @@ export const F_loginuser = (userdata: any, res_: any) => {
       })
       .then((data) => {
         if (data.length > 0) {
-          data.forEach((itr) => {
-            res_.send(itr._id);
-          });
+         res_.send(data)
         } else {
           res_.send(404);
         }
