@@ -1,0 +1,16 @@
+http://localhost:8000/signup?name=mahmoud&pass=2020&tel=100
+
+http://localhost:8000/login?identify=mahmoud&psw=2020
+
+
+http://localhost:8000/finduser?name=mahmoud
+
+
+http://localhost:8000/del/:id
+
+http://localhost:8000/msgs?id=....
+
+http://localhost:8000/priverchat?sid=....&rid=....
+
+http://localhost:8000/sendmsg?sid=....&rid=...&msg=....
+
