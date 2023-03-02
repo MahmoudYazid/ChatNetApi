@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userdbSchima = exports.msgDbSchima = void 0;
+exports.CNVSchima = exports.userdbSchima = exports.msgDbSchima = void 0;
 const mongoose_1 = require("mongoose");
 (0, mongoose_1.set)("strictQuery", false);
 exports.msgDbSchima = new mongoose_1.Schema({
@@ -14,3 +14,10 @@ exports.userdbSchima = new mongoose_1.Schema({
     tel: Number,
     password: String
 });
+exports.CNVSchima = new mongoose_1.Schema({
+    userOneid: String,
+    usertwoid: String,
+    UserOneName: String,
+    UserTwoName: String,
+});
+// GetUserNameById;

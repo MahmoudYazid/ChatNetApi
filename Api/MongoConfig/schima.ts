@@ -13,3 +13,14 @@ export const userdbSchima=new Schema({
     password:String
     
 })
+
+
+export const CNVSchima = new Schema({
+  userOneid: String,
+  usertwoid: String,
+  UserOneName: String,
+  UserTwoName: String,
+});
+
+
+// GetUserNameById;

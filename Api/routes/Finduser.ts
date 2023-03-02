@@ -2,8 +2,7 @@ import { Express, Router } from "express";
 
 import {
     F_FindUserByName,
-  F_Getchatmsgs,
-  F_allchatmsgs,
+  
   F_sendmsg,
 } from "../MongoConfig/dbcontext";
 
