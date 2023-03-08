@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { connectionstring } from "./Config";
 import { CNVdbModel, MsgDbModel, userdbModel } from "./model";
+import { json, response } from "express";
 
 
 
@@ -93,25 +94,15 @@ export const F_loginuser = (userdata: any, res_: any) => {
         ],
       })
       .then((data) => {
-        if (data.length>0){
-                 data.forEach((x) =>
-                   CNVdbModel.find({
-                     $or: [{ userOneid: x._id }, { usertwoid: x._id }],
-                   }).then((y) => {
-                     res_.send(y);
-                   })
-                 );
-          
-
+        if (data.length > 0) {
+          data.forEach((x) =>
+            CNVdbModel.find({
+              $or: [{ userOneid: x._id }, { usertwoid: x._id }],
+            }).then((y) => {
+              res_.send(y);
+            })
+          );
         }
-       
-   
-          
-     
-
-         
-      
-        
       })
       .catch(() => {
         res_.send(404);
@@ -138,13 +129,63 @@ export const F_Getchatmsgs = (
 
 
 export const F_FindUserByName = (name_:String,res_:any)=>{
-   mongoose.connect(connectionstring).then(() => { 
+  mongoose.connect(connectionstring).then(() => {
     userdbModel.find({ username: name_ }).then((data) => {
-      res_.send(data)
-     
-   }); }
-    
-   )
+      res_.send(data);
+    });
+  });
+}
 
+export const addToCnv=(sender:String,Reciever:String,res_:any)=>{
+  
+  mongoose.connect(connectionstring).then(() => {
+    userdbModel.find({ username: sender }).then((data) => {
+      data.map((fetchsenderName)=>{
+        mongoose.connect(connectionstring).then(()=>{
+          userdbModel.find({username:Reciever}).then((res)=>{
+            res.map((fetchRecieverdata)=>{
+              CNVdbModel.find({
+                $or: [
+                  { UserOneName: sender, UserTwoName: Reciever },
+                  { UserOneName: Reciever, UserTwoName: sender },
+                ],
+              }).then((data)=>{
+                if(data.length===0){
+                  const newchat = new CNVdbModel({
+                    userOneid: fetchsenderName._id,
+                    usertwoid: fetchRecieverdata._id,
+                    UserOneName: sender,
+                    UserTwoName: Reciever,
+                  });
+                  newchat.save();
+                  res_.send(200)
+
+                  
+                }else{
+                  res_.send("User Exists in you contacts")
+     
+
+                }
+              })
+                  
+
+
+
+
+
+              
+            })
+          })
+        })
+
+
+
+
+
+      })
+      
+    });
+  });
+  
 
 }

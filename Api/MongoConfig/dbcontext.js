@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.F_FindUserByName = exports.F_Getchatmsgs = exports.F_loginuser = exports.F_adduser = exports.F_delmsg = exports.F_sendmsg = void 0;
+exports.addToCnv = exports.F_FindUserByName = exports.F_Getchatmsgs = exports.F_loginuser = exports.F_adduser = exports.F_delmsg = exports.F_sendmsg = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const Config_1 = require("./Config");
 const model_1 = require("./model");
@@ -115,3 +115,38 @@ const F_FindUserByName = (name_, res_) => {
     });
 };
 exports.F_FindUserByName = F_FindUserByName;
+const addToCnv = (sender, Reciever, res_) => {
+    mongoose_1.default.connect(Config_1.connectionstring).then(() => {
+        model_1.userdbModel.find({ username: sender }).then((data) => {
+            data.map((fetchsenderName) => {
+                mongoose_1.default.connect(Config_1.connectionstring).then(() => {
+                    model_1.userdbModel.find({ username: Reciever }).then((res) => {
+                        res.map((fetchRecieverdata) => {
+                            model_1.CNVdbModel.find({
+                                $or: [
+                                    { UserOneName: sender, UserTwoName: Reciever },
+                                    { UserOneName: Reciever, UserTwoName: sender },
+                                ],
+                            }).then((data) => {
+                                if (data.length === 0) {
+                                    const newchat = new model_1.CNVdbModel({
+                                        userOneid: fetchsenderName._id,
+                                        usertwoid: fetchRecieverdata._id,
+                                        UserOneName: sender,
+                                        UserTwoName: Reciever,
+                                    });
+                                    newchat.save();
+                                    res_.send(200);
+                                }
+                                else {
+                                    res_.send("User Exists in you contacts");
+                                }
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    });
+};
+exports.addToCnv = addToCnv;

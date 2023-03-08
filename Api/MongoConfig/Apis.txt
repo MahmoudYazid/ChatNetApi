@@ -1,12 +1,12 @@
-http://localhost:8000/signup?name=mahmoud&pass=2020&tel=100  ->post
+https://chatnet-d7vv.onrender.com/signup?name=mahmoud&pass=2020&tel=100  ->post
 
-http://localhost:8000/login?identify=mahmoud&psw=2020 ->get
+https://chatnet-d7vv.onrender.com/login?identify=mahmoud&psw=2020 ->get
 
-http://localhost:8000/finduser?name=mahmoud   ->get
+https://chatnet-d7vv.onrender.com/finduser?name=mahmoud   ->get
 
-http://localhost:8000/del/:id  ->delete
+https://chatnet-d7vv.onrender.com/del/:id  ->delete
 
-http://localhost:8000/priverchat?sid=....&rid=....     ->get
+https://chatnet-d7vv.onrender.com/priverchat?sid=....&rid=....     ->get
 
-http://localhost:8000/sendmsg?sid=....&rid=...&msg=....   ->post
+https://chatnet-d7vv.onrender.com/sendmsg?sid=....&rid=...&msg=....   ->post
 

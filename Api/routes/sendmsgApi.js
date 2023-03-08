@@ -7,3 +7,6 @@ exports.sendmsgRouter = (0, express_1.Router)();
 exports.sendmsgRouter.post("/sendmsg", (req, res) => {
     (0, dbcontext_1.F_sendmsg)(String(req.query.sid), String(req.query.rid), String(req.query.msg), res);
 });
+exports.sendmsgRouter.post("/sendcsv", (req, res) => {
+    (0, dbcontext_1.addToCnv)(String(req.query.sender), String(req.query.reciever), res);
+});
