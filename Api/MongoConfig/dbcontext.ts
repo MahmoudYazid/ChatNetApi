@@ -162,7 +162,7 @@ export const addToCnv=(sender:String,Reciever:String,res_:any)=>{
 
                   
                 }else{
-                  res_.send("User Exists in you contacts")
+                  res_.send({Alarm:"this friend you have chat with him before"})
      
 
                 }
