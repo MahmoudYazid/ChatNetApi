@@ -139,7 +139,7 @@ const addToCnv = (sender, Reciever, res_) => {
                                     res_.send(200);
                                 }
                                 else {
-                                    res_.send("User Exists in you contacts");
+                                    res_.send({ Alarm: "this friend you have chat with him before" });
                                 }
                             });
                         });
